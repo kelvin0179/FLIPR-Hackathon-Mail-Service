@@ -1,6 +1,6 @@
 {{!-- <h1>Welcome {{name}}</h1>
 <a class="btn btn-danger" href="/user/logout">Logout</a> --}}
-<h2>Welcome {{name}}</h2>
+<h2>Your Scheduled Mails</h2>
 
 {{#if response}}
 <table class="striped">
@@ -15,30 +15,19 @@
     <tbody>
         {{#each response}}
         <tr>
-            <td><a href="/api/notify/show/{{_id}}">{{subject}}</a></td>
+            <td><a href="/stories/{{_id}}">{{subject}}</a></td>
             <td>{{formatDate date "MMMM Do YYYY, h:mm:ss a"}}</td>
             {{!-- the formatDate here acts as a function in helpers/hbs through app.js to
             format date. The rest two attributes are passed as parameters --}}
             <td><span class="dash-status">{{to}}</span></td>
             <td>
                 {{!-- <a href="/stories/edit/{{{_id}}}" class="btn btn-float"><i class="fa fa-edit"></i></a> --}}
-                <a href="/api/notify/schedule/{{_id}}" class="btn btn-float blue">
-                    <i class="fas fa-envelope-square"></i>
-                </a>
-                <a href="/api/notify/edit/{{_id}}" class="btn btn-float">
-                    <i class="fas fa-edit"></i>
-                </a>
-                <form action="/api/notify/{{_id}}" method="POST" id="delete-form">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <button type="submit" class="btn btn-float red">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </form>
             </td>
         </tr>
         {{/each}}
     </tbody>
 </table>
 {{else}}
-<h5>You have not created any Mails</h5>
+<h5>You have not Scheduled any Mails</h5>
+<a href="/dashboard" class="btn">Dashboard</a>
 {{/if}}

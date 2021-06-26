@@ -36,9 +36,9 @@ app.use(methodOverride(function (req, res) {
     }
 }));
 
-const { saveData } = require("./helpers/hbs");
+const { saveData, formatDate } = require("./helpers/hbs");
 //view engine handlebars
-app.engine('.hbs', exphbs({ helpers: { saveData }, defaultLayout: 'main', extname: '.hbs' }));
+app.engine('.hbs', exphbs({ helpers: { saveData, formatDate }, defaultLayout: 'main', extname: '.hbs' }));
 app.set('view engine', '.hbs');
 
 
@@ -73,6 +73,7 @@ app.use(function (req, res, next) {
     if (req.user) {
         console.log("USER");
         console.log(req.user);
+        // res.locals.user = req.user;
     }
     if (req.body) {
         console.log("BODY");
@@ -89,6 +90,7 @@ app.use("/", require("./routes/index"));
 app.use("/user", require("./routes/users"));
 app.use("/auth", require("./routes/auth"));
 app.use("/api/notify", require("./routes/notify"));
+app.use("/api/history", require("./routes/history"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));

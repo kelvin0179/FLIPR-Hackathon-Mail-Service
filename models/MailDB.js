@@ -3,27 +3,45 @@ const mongoose = require('mongoose');
 
 
 const MailSchema = mongoose.Schema({
-    user: {
+
+    userID: {
         type: String,
         required: true
     },
-    userMail: {
+    to: {
         type: String,
         required: true
     },
-    recipient: {
+    cc: {
         type: String,
         required: true
     },
-    mailSubject: {
+    schTime: {
+        type: Number,
+        required: true
+    },
+    schUnit: {
+        type: String,
+        required: true
+    },
+    subject: {
         type: String,
         required: true
     },
     mailBody: {
         type: String,
-        required: true  
+        required: true
+    },
+    isHome: {
+        type: Boolean,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now()
     }
 });
+
 
 
 
