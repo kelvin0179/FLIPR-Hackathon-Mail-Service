@@ -15,13 +15,19 @@
     <tbody>
         {{#each response}}
         <tr>
-            <td><a href="/stories/{{_id}}">{{subject}}</a></td>
+            <td><a href="/api/notify/show/{{_id}}">{{subject}}</a></td>
             <td>{{formatDate date "MMMM Do YYYY, h:mm:ss a"}}</td>
             {{!-- the formatDate here acts as a function in helpers/hbs through app.js to
             format date. The rest two attributes are passed as parameters --}}
             <td><span class="dash-status">{{to}}</span></td>
             <td>
                 {{!-- <a href="/stories/edit/{{{_id}}}" class="btn btn-float"><i class="fa fa-edit"></i></a> --}}
+                <form action="/api/history/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-float red">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </form>
             </td>
         </tr>
         {{/each}}

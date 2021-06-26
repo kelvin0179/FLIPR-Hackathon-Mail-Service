@@ -2,20 +2,26 @@
 <div class="row">
     <form action="/api/notify/{{mailData._id}}" method="POST" class="col s12">
         <input type="hidden" name="_method" value="PUT">
+        {{!-- <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title" value="{{story.title}}">
+                <label for="title">Title</label>
+            </div>
+        </div> --}}
         <div class="row">
             <div class="input-field col s12">
-                <input id="subject" name="subject" type="text" value={{mailData.subject}}>
-                <label for="subject">Title</label>
+                <input id="title" name="subject" type="text" value={{mailData.subject}}>
+                <label for="title">Subject</label>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s6">
-                <input id="to" name="to" type="email" class="validate" value={{mailData.to}}>
-                <label for="to">To</label>
+                <input id="email" name="to" type="email" class="validate" value={{mailData.to}}>
+                <label for="email">To</label>
             </div>
             <div class="input-field col s6">
-                <input id="cc" name="cc" type="email" class="validate" value={{mailData.cc}}>
-                <label for="cc">CC</label>
+                <input id="email" name="cc" type="email" class="validate" value={{mailData.cc}}>
+                <label for="email">CC</label>
             </div>
         </div>
         <div class="row">
@@ -29,8 +35,8 @@
                 <label for="status">Time Unit</label>
             </div>
             <div class="input-field col s6">
-                <input id="schTime" name="schTime" type="text" class="validate" value={{mailData.schTime}}>
-                <label for="schTime">How Many</label>
+                <input id="text" name="schTime" type="text" class="validate" value={{mailData.schTime}}>
+                <label for="text">How Many</label>
             </div>
         </div>
         <div class="row">

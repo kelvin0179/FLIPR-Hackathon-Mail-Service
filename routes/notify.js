@@ -48,7 +48,7 @@ router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
             { new: true, useFindAndModify: false }
         );
 
-        if (!patch) res.status(400).render("error/400");
+        if (!patch) res.status(404).render("error/404");
 
         // make a schedule string
         cron.schedule('*/15 * * * * *', async () => {
@@ -57,7 +57,7 @@ router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
                 maildata.to,
                 maildata.cc,
                 maildata.subject,
-                maildata.mailbody,
+                maildata.mailBody,
                 (err, result) => {
                     if (err) {
                         console.error({ err });
@@ -78,6 +78,7 @@ router.get('/edit/:id', ensureAuthenticated, async (req, res) => {
             return res.status(404).render("error/404");
         }
         else {
+            console.log("EDIT");
             console.log(mailData);
             res.render("edit", { mailData });
         }
@@ -94,6 +95,8 @@ router.get('/show/:id', ensureAuthenticated, async (req, res) => {
             return res.render("error/404");
         }
         else {
+            console.log("SHOW");
+            console.log(mailData);
             res.render("show", {
                 title: mailData.subject,
                 date: mailData.date,

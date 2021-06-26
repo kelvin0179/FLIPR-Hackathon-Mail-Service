@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Mail = require('../models/MailDB');
-
+const { ensureAuthenticated } = require("../config/auth");
 
 // work in progress
 
@@ -18,14 +18,24 @@ const Mail = require('../models/MailDB');
 //     }
 // });
 
-router.get('/', async (req, res) => {
+router.get('/', ensureAuthenticated, async (req, res) => {
     try {
         let response = await Mail.find(
             { userID: req.user._id, isHome: false },
         ).lean();
         res.render("history", { response });
     } catch (err) {
-        res.status(500).type("txt").render("error/500");
+        res.status(500).render("error/500");
+    }
+});
+
+router.delete('/:id', ensureAuthenticated, async (req, res) => {
+    try {
+        await Mail.remove({ _id: req.params.id });
+        res.redirect("/api/history");
+    } catch (err) {
+        console.error(err);
+        res.render("error/500");
     }
 });
 
