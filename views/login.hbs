@@ -1,0 +1,35 @@
+<div class="sidenav">
+    <div class="login-main-text">
+        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Login</h1>
+        <h2>Mail Service<br> Login Page</h2>
+        <p>Login from here to access.</p>
+    </div>
+</div>
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            {{> _flash}}
+            <form action="/user/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" class="form-control" placeholder="Email" value={{saveData
+                        email}}>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-black" value="Save">Login</button>
+                    {{!-- <button class="btn btn-secondary" href="/users/register">Create Account</button> --}}
+                    <a class="btn btn-secondary" href="/user/register" role="button">Create Account</a>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-danger" href="/auth/google" role="button">
+                        <i class="fab fa-google left"></i> Log In With Google
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
