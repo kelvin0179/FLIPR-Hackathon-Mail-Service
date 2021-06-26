@@ -69,14 +69,26 @@ app.use((req, res, next) => {
     res.locals.error = req.flash("error");
     next();
 });
-// app.use(function (req, res, next) {
-//     console.log(req.next);
-//     next();
-// });
+app.use(function (req, res, next) {
+    if (req.user) {
+        console.log("USER");
+        console.log(req.user);
+    }
+    if (req.body) {
+        console.log("BODY");
+        console.log(req.body);
+    }
+    if (req.params) {
+        console.log("PARAMS");
+        console.log(req.params);
+    }
+    next();
+});
 
 app.use("/", require("./routes/index"));
 app.use("/user", require("./routes/users"));
 app.use("/auth", require("./routes/auth"));
+app.use("/api/notify", require("./routes/notify"));
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));
