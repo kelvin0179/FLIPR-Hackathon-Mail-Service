@@ -35,7 +35,7 @@ module.exports = function (passport) {
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: '/auth/google/callback',
     },
-        (accessToken, refreshToken, profile, done) => {
+        async (accessToken, refreshToken, profile, done) => {
             const newUser = {
                 googleId: profile.id,
                 displayName: profile.displayName,
@@ -43,31 +43,34 @@ module.exports = function (passport) {
                 lastName: profile.name.familyName,
                 image: profile.photos[0].value,
             }
-            // try {
-            //     let user = gUser.findOne({ googleId: profile.id });
-            //     if (user) {
-            //         done(null, user);
-            //     }
-            //     else {
-            //         user = gUser.create(newUser);
-            //         done(null, user);
-            //     }
-            // }
-            // catch (err) {
-            //     console.error(err);
-            // }
-            gUser.findOne({ googleId: profile.id })
-                .then(user => {
+            try {
+                let user = await gUser.findOne({ googleId: profile.id });
+                if (user) {
                     console.log("In Google");
-                    if (user) {
-                        return done(null, user);
-                    }
-                    else {
-                        user = gUser.create(newUser);
-                        return done(null, user);
-                    }
-                })
-                .catch(err => console.error(err));
+                    done(null, user);
+                }
+                else {
+                    console.log("In Google");
+                    user = await gUser.create(newUser);
+                    done(null, user);
+                }
+            }
+            catch (err) {
+                console.error(err);
+            }
+            // gUser.findOne({ googleId: profile.id })
+            //     .then(user => {
+            //         console.log("In Google");
+            //         console.log(user);
+            //         if (user) {
+            //             return done(null, user);
+            //         }
+            //         else {
+            //             user = gUser.create(newUser);
+            //             return done(null, user);
+            //         }
+            //     })
+            //     .catch(err => console.error(err));
         }
     ));
     passport.serializeUser(function (user, done) {
