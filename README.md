@@ -19,7 +19,7 @@ These instructions will get your copy of the project up and running on your loca
 you need to have NodeJs/npm installed on your machine
 ### Installation
 
-```
+
 Install dependencies 
 ```sh
 $ npm install
@@ -85,7 +85,7 @@ $ npm start
     └── show.hbs
 
 ```
-
+## Screen Shots
 
 ## Deployment
 
@@ -217,7 +217,7 @@ sudo service nginx restart
 * My SubDomain is `mailhub`.
 * So the name of two `A` records are `mailhub.mohitjaiswal.studio` and `*.mailhub.mohitjaiswal.studio`.
 
-## Edit Server Name in NGINX
+### Edit Server Name in NGINX
 
 * Now that the Domain Name is Created we just have to edit the server name at
 ```bash
@@ -234,7 +234,7 @@ sudo nginx -t
 sudo service nginx restart
 ```
 
-## Add SSL with LetsEncrypt
+### Add SSL with LetsEncrypt
 
 ```bash
 sudo add-apt-repository ppa:certbot/certbot
@@ -246,10 +246,8 @@ sudo certbot --nginx -d yourdomain -d www.yourdomain
 certbot renew --dry-run
 ```
 
-# Congratulations On Your https Deployment !
+### Congratulations On Your https Deployment !
 
-
-## Screen Shots
 
 ## Authors
 * **Mohit Jaiswal** - *Initial work* - [kelvin0179](https://github.com/kelvin0179)
