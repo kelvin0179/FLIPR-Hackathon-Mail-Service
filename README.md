@@ -1,6 +1,6 @@
 # Flipr-Hackathon9.0 / Mailing Service
 
-A Web-app to schedule and send Recurring, Weekly, Monthly, Yearly mails. 
+A Web-app to schedule and send Recurring, Montly, Weekly, Monthly, Yearly mails. 
 
 Live Deployed [here](). // link dalna hai
 
@@ -10,7 +10,7 @@ Live Deployed [here](). // link dalna hai
 * [Express](https://expressjs.com/) - framework for backend
 * [Mongoose](https://mongoosejs.com/) - ODM
 * [MongoDB](https://www.mongodb.com/) - Database
-* [Express Handlebars](https://www.npmjs.com/package/express-handlebars) - Html templing
+* [Express Handlebars](https://www.npmjs.com/package/express-handlebars) - Html templating
 * [Node Cron](https://www.npmjs.com/package/node-cron) - Job scheduler
 
 ## Getting Started
@@ -19,7 +19,7 @@ These instructions will get your copy of the project up and running on your loca
 you need to have NodeJs/npm installed on your machine
 ### Installation
 
-```
+
 Install dependencies 
 ```sh
 $ npm install
@@ -37,17 +37,17 @@ $ npm start
 ## File System
 ```sh
 .
-├── config                        ->  //environment confugration
+├── config 
 │             ├── auth.js
 │             ├── config.env
 │             ├── db.js
 │             └── passport.js
-├── controllers                   ->  // controlling functions
+├── controllers  =
 │             └── notifier.js
 ├── helpers
 │             └── hbs.js
 ├── index.js
-├── models                        ->  // models for db schema
+├── models                        
 │             ├── gUser.js
 │             ├── MailDB.js
 │             └── User.js
@@ -58,13 +58,13 @@ $ npm start
 │                 ├── main.css
 │                 └── style.css
 ├── README.md
-├── routes                        ->  //routes for diff services
+├── routes                        
 │             ├── auth.js
 │             ├── history.js
 │             ├── index.js
 │             ├── notify.js
 │             └── users.js
-└── views                         ->  // frontend
+└── views                         
     ├── create.hbs
     ├── dashboard.hbs
     ├── edit.hbs
@@ -85,11 +85,10 @@ $ npm start
     └── show.hbs
 
 ```
-
+## Screen Shots
 
 ## Deployment
 
-//ye dekh lena #KELVIN
 
 ### Heroku Deployment
 ```sh
@@ -200,11 +199,11 @@ sudo service nginx restart
 
 * Everytime you edit your NGINX file you need to restart it.
 
-## Your http deployment should be ready.
+### Your http deployment should be ready.
 
-## For https you have to have a Domain name
+### For https you have to have a Domain name
 
-## [Name.com](https://www.name.com/partner/github-students)
+### [Name.com](https://www.name.com/partner/github-students)
 
 * If you have a student Github account then getting a free domain should be easy.
 * After obtaining the domain , go to its DNS setting and Create two `A Records`.
@@ -218,7 +217,7 @@ sudo service nginx restart
 * My SubDomain is `mailhub`.
 * So the name of two `A` records are `mailhub.mohitjaiswal.studio` and `*.mailhub.mohitjaiswal.studio`.
 
-## Edit Server Name in NGINX
+### Edit Server Name in NGINX
 
 * Now that the Domain Name is Created we just have to edit the server name at
 ```bash
@@ -235,7 +234,7 @@ sudo nginx -t
 sudo service nginx restart
 ```
 
-## Add SSL with LetsEncrypt
+### Add SSL with LetsEncrypt
 
 ```bash
 sudo add-apt-repository ppa:certbot/certbot
@@ -247,10 +246,8 @@ sudo certbot --nginx -d yourdomain -d www.yourdomain
 certbot renew --dry-run
 ```
 
-# Congratulations On Your https Deployment !
+### Congratulations On Your https Deployment !
 
-
-## Screen Shots
 
 ## Authors
 * **Mohit Jaiswal** - *Initial work* - [kelvin0179](https://github.com/kelvin0179)
