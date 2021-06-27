@@ -52,12 +52,12 @@ router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
 
         console.log(patch.schTime);
         let timeObj = { 
-                sec : 0,
-                min : 2,
-                hour: 4,
-                day:  6,
-                mon:  8,
-                year: 10
+                "sec" : 0,
+                "min" : 2,
+                "hour": 4,
+                "day":  6,
+                "mon":  8,
+                "year": 10
             };
         let index = timeObj[patch.schUnit], cronTime ="";
 
