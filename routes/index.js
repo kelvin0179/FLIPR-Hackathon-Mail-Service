@@ -14,7 +14,7 @@ router.get('/dashboard', ensureAuthenticated, async (req, res) => {
     try {
         let response = await Mail.find(
             { userID: req.user._id, isHome: true },
-        ).lean();
+        ).sort({ _id: -1 }).lean();
         let userName;
         if (req.user.name) {
             userName = req.user.name;
