@@ -8,8 +8,8 @@ const { ensureAuthenticated } = require("../config/auth");
 
 /**
  * @route   POST /api/notify/
- * @desc    schedule a new job
- * @access  Public
+ * @desc    Create a new job
+ * @access  Private
  */
 
 router.post('/', ensureAuthenticated, async (req, res) => {
@@ -24,7 +24,8 @@ router.post('/', ensureAuthenticated, async (req, res) => {
             schUnit: req.body.schUnit,
             subject: req.body.subject,
             mailBody: req.body.mailBody,
-            isHome: true
+            isHome: true,
+            date: Date.now()
         });
         let saved = await maildata.save();
 
@@ -36,21 +37,28 @@ router.post('/', ensureAuthenticated, async (req, res) => {
     }
 });
 
+
+/**
+ * @route   GET api/notify/schedule/:id
+ * @desc    Schedule a job
+ * @access  Private
+ */
+
 router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
     try {
 
         let patch = await Mail.findByIdAndUpdate(
             { _id: req.params.id },
-            { $set: { isHome: false } },
+            { $set: { isHome: false , date: Date.now()} },
             { new: true, useFindAndModify: false }
         );
 
         if (!patch) res.status(404).render("error/404");
 
-        /*makeing the schedule string*/
+        /*--- makeing the schedule string ---*/
         let schedule = "* * * * * *";
 
-        console.log(patch.schTime);
+        console.log(`task scheduled for every ${patch.schTime} ${patch.schUnit}`);
         let timeObj = { 
                 "sec" : 0,
                 "min" : 2,
@@ -64,6 +72,10 @@ router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
         for(let i = 0; i<=10; i++){
             if(i === index) {
                 cronTime += `*/${patch.schTime}`;
+                continue;
+            }
+            if(i < index && i%2 === 0) {
+                cronTime+= "0";
                 continue;
             }
             cronTime+= schedule[i];
@@ -82,14 +94,16 @@ router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
                     if (err) {
                         console.error({ err });
                     }
-                    else res.redirect("/dashboard");
                 });
         });
+        res.redirect("/dashboard");
     } catch (e) {
         console.error('an error occured: ' + JSON.stringify(e, null, 2));
         throw e;
     }
 });
+
+
 
 router.get('/edit/:id', ensureAuthenticated, async (req, res) => {
     try {
@@ -107,6 +121,8 @@ router.get('/edit/:id', ensureAuthenticated, async (req, res) => {
         res.render("error/500");
     }
 });
+
+
 
 router.get('/show/:id', ensureAuthenticated, async (req, res) => {
     try {
