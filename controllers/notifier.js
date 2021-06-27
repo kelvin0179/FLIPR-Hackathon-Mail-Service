@@ -17,7 +17,7 @@ exports.sendEmail = function (to, cc, subject, mailbody, callback) {
         to: to,
         cc: cc,
         subject: subject,
-        text: mailbody
+        html: mailbody
     };
     nodemailerTransporter.sendMail(options, (error, info) => {
         if (error) {
