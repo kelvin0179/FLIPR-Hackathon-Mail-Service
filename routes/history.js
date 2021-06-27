@@ -22,7 +22,7 @@ router.get('/', ensureAuthenticated, async (req, res) => {
     try {
         let response = await Mail.find(
             { userID: req.user._id, isHome: false },
-        ).sort({ _id: -1 }).lean();
+        ).sort({date: -1}).lean();
         res.render("history", { response });
     } catch (err) {
         res.status(500).render("error/500");
