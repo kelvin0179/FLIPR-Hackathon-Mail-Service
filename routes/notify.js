@@ -58,23 +58,34 @@ router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
         /*--- makeing the schedule string ---*/
         let schedule = "* * * * * *";
 
-        console.log(`task scheduled for every ${patch.schTime} ${patch.schUnit}`);
         let timeObj = { 
-                "sec" : 0,
-                "min" : 2,
-                "hour": 4,
-                "day":  6,
-                "mon":  8,
-                "year": 10
+                "sec" :  0,
+                "min" :  2,
+                "hour":  4,
+                "date":  6,
+                "mon":   8,
+                "day":  10
             };
+
         let index = timeObj[patch.schUnit], cronTime ="";
+
+        let key = patch.schTime;
+        if(index === 10) key -= 1;
 
         for(let i = 0; i<=10; i++){
             if(i === index) {
-                cronTime += `*/${patch.schTime}`;
+                if(key == 0){
+                    cronTime +=  "0";
+                    continue;
+                }
+                cronTime += `*/${key}`;
                 continue;
             }
             if(i < index && i%2 === 0) {
+                if(i === 6 || i === 8){
+                    cronTime+="1";
+                    continue;
+                }
                 cronTime+= "0";
                 continue;
             }

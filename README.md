@@ -1,6 +1,6 @@
 # Flipr-Hackathon9.0 / Mailing Service
 
-A Web-app to schedule and send Recurring, Weekly, Monthly, Yearly mails. 
+A Web-app to schedule and send Recurring, Montly, Weekly, Monthly, Yearly mails. 
 
 Live Deployed [here](). // link dalna hai
 
@@ -10,7 +10,7 @@ Live Deployed [here](). // link dalna hai
 * [Express](https://expressjs.com/) - framework for backend
 * [Mongoose](https://mongoosejs.com/) - ODM
 * [MongoDB](https://www.mongodb.com/) - Database
-* [Express Handlebars](https://www.npmjs.com/package/express-handlebars) - Html templing
+* [Express Handlebars](https://www.npmjs.com/package/express-handlebars) - Html templating
 * [Node Cron](https://www.npmjs.com/package/node-cron) - Job scheduler
 
 ## Getting Started
@@ -37,17 +37,17 @@ $ npm start
 ## File System
 ```sh
 .
-├── config                        ->  //environment confugration
+├── config 
 │             ├── auth.js
 │             ├── config.env
 │             ├── db.js
 │             └── passport.js
-├── controllers                   ->  // controlling functions
+├── controllers  =
 │             └── notifier.js
 ├── helpers
 │             └── hbs.js
 ├── index.js
-├── models                        ->  // models for db schema
+├── models                        
 │             ├── gUser.js
 │             ├── MailDB.js
 │             └── User.js
@@ -58,13 +58,13 @@ $ npm start
 │                 ├── main.css
 │                 └── style.css
 ├── README.md
-├── routes                        ->  //routes for diff services
+├── routes                        
 │             ├── auth.js
 │             ├── history.js
 │             ├── index.js
 │             ├── notify.js
 │             └── users.js
-└── views                         ->  // frontend
+└── views                         
     ├── create.hbs
     ├── dashboard.hbs
     ├── edit.hbs
