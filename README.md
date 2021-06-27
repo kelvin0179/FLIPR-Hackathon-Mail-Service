@@ -2,10 +2,9 @@
 
 A Web-app to schedule and send Recurring, Weekly, Monthly, Yearly mails. 
 
-Live Deployed [here]().
+Live Deployed [here](). // link dalna hai
 
-wagger-ui for API documentation 
--->
+
 ## Built With
 * [NodeJS](https://nodejs.org/en/docs/) -  evented I/O for the backend
 * [Express](https://expressjs.com/) - framework for backend
