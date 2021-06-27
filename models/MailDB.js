@@ -13,8 +13,7 @@ const MailSchema = mongoose.Schema({
         required: true
     },
     cc: {
-        type: String,
-        required: true
+        type: String
     },
     schTime: {
         type: Number,

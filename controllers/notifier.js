@@ -11,17 +11,21 @@ let nodemailerTransporter = nodemailer.createTransport({
 });
 
 
-exports.sendEmail = function (from, email, subject, text, callback) {
+exports.sendEmail = function (to, cc, subject, mailbody, callback) {
     let options = {
-        from: from, // from user ka daalna hai
-        to: email,
+        from: process.env.EMAIL,
+        to: to,
+        cc: cc,
         subject: subject,
-        text: text
+        text: mailbody
     };
-    console.log(options);
     nodemailerTransporter.sendMail(options, (error, info) => {
         if (error) {
             return callback(error);
+        }
+        else {
+            let current = new Date();
+            console.log(`mail sent! to ${options.to} and CCs at ${current.toLocaleString()}`);
         }
         callback(error, info);
     });
