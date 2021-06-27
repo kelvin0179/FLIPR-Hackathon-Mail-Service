@@ -3,39 +3,44 @@
     <form action="/api/notify" method="POST" class="col s12">
         <div class="row">
             <div class="input-field col s12">
-                <input id="subject" name="subject" type="text" class="validate">
-                <label for="subject">Title</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s6">
-                <input id="to" name="to" type="email" class="validate">
+                <input id="to" name="to" type="email" class="validate"  required>
                 <label for="to">To</label>
             </div>
-            <div class="input-field col s6">
-                <input id="cc" name="cc" type="email" class="validate">
-                <label for="cc">CC</label>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                    <input id="cc" name="cc" type="email" class="validate">
+                    <label for="cc">CC</label>
             </div>
         </div>
         <div class="row">
+            <div class="input-field col s12">
+                <input id="subject" name="subject" type="text" class="validate" required>
+                <label for="subject">Subject</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s6">
+                <input id="schTime" name="schTime" type="number" class="validate" required>
+                <label for="schTime">Recieve Mail every </label>
+            </div>
             <div class="input-field col s6">
                 <select id="status" name="schUnit">
                     <option value="sec" selected>Seconds</option>
                     <option value="min">Minutes</option>
+                    <option value="hour">Hours</option>
+                    <option value="day">Days</option>
                     <option value="mon">Months</option>
                     <option value="year">Years</option>
                 </select>
                 <label for="status">Time Unit</label>
             </div>
-            <div class="input-field col s6">
-                <input id="schTime" name="schTime" type="text" class="validate">
-                <label for="schTime">How Many</label>
-            </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <h5>Write Your Mail Here:</h5>
-                <textarea id="body" name="mailBody"></textarea>
+                <textarea id="body" name="mailBody" required></textarea>
             </div>
         </div>
         <div class="row">

@@ -38,7 +38,7 @@ router.post('/', ensureAuthenticated, async (req, res) => {
 
 router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
     try {
-        
+
         let patch = await Mail.findByIdAndUpdate(
             { _id: req.params.id },
             { $set: { isHome: false } },
@@ -47,8 +47,31 @@ router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
 
         if (!patch) res.status(404).render("error/404");
 
-        // make a schedule string
-        cron.schedule('*/15 * * * * *', async () => {
+        /*makeing the schedule string*/
+        let schedule = "* * * * * *";
+
+        console.log(patch.schTime);
+        let timeObj = { 
+                sec : 0,
+                min : 2,
+                hour: 4,
+                day:  6,
+                mon:  8,
+                year: 10
+            };
+        let index = timeObj[patch.schUnit], cronTime ="";
+
+        for(let i = 0; i<=10; i++){
+            if(i === index) {
+                cronTime += `*/${patch.schTime}`;
+                continue;
+            }
+            cronTime+= schedule[i];
+        }
+        /*--------------------------*/
+        console.log(cronTime);
+
+        cron.schedule(cronTime, async () => {
 
             await notifier.sendEmail(
                 patch.to,

@@ -28,8 +28,7 @@ const MailSchema = mongoose.Schema({
         required: true
     },
     mailBody: {
-        type: String,
-        required: true
+        type: String
     },
     isHome: {
         type: Boolean,
