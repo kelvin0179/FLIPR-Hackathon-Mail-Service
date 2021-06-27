@@ -22,6 +22,17 @@ router.get('/dashboard', ensureAuthenticated, async (req, res) => {
         else {
             userName = req.user.firstName;
         }
+        const timeObj = {
+            "sec": "Second",
+            "min": "Minute",
+            "hour": "Hour",
+            "day": "Day",
+            "mon": "Month",
+            "year": "Year"
+        };
+        for (let i = 0; i < response.length; i++) {
+            response[i].schUnit = (timeObj[response[i].schUnit]);
+        }
         res.render("dashboard", {
             name: userName,
             response

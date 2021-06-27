@@ -14,6 +14,9 @@ module.exports = {
         }
     },
     select: function (selected, options) {
+        if (selected == undefined) {
+            selected = options.data.root.mailData.schUnit;
+        }
         return options
             .fn(this)
             .replace(

@@ -11,7 +11,6 @@ const exphbs = require('express-handlebars'); // view Engine
 const path = require("path"); // Node 
 const methodOverride = require('method-override') // for overriding PUT and DELETE , since forms can only have GET | POST
 
-
 //config accessing the global variables
 dotenv.config({ path: "./config/config.env" });
 
@@ -73,7 +72,6 @@ app.use(function (req, res, next) {
     if (req.user) {
         console.log("USER");
         console.log(req.user);
-        // res.locals.user = req.user;
     }
     if (req.body) {
         console.log("BODY");

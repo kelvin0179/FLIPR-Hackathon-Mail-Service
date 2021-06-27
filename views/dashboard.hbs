@@ -8,8 +8,9 @@
         <tr>
             <th>Title</th>
             <th>Date</th>
+            <th>Time</th>
+            <th>Unit</th>
             <th>To</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +20,8 @@
             <td>{{formatDate date "MMMM Do YYYY, h:mm:ss a"}}</td>
             {{!-- the formatDate here acts as a function in helpers/hbs through app.js to
             format date. The rest two attributes are passed as parameters --}}
+            <td><span class="dash-status">{{schTime}}</span></td>
+            <td><span class="dash-status">{{schUnit}}</span></td>
             <td><span class="dash-status">{{to}}</span></td>
             <td>
                 {{!-- <a href="/stories/edit/{{{_id}}}" class="btn btn-float"><i class="fa fa-edit"></i></a> --}}
