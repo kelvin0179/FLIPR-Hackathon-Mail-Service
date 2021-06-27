@@ -1,8 +1,8 @@
 # Flipr-Hackathon9.0 / Mailing Service
 
-A Web-app to schedule and send Recurring, Montly, Weekly, Monthly, Yearly mails. 
+A Web-app to schedule and send Recurring, Weekly, Monthly, Yearly mails. 
 
-Live Deployed [here](). // link dalna hai
+Live Deployed [here]().
 
 
 ## Built With
@@ -24,9 +24,9 @@ Install dependencies
 ```sh
 $ npm install
 ```
+
 Set up environment variables 
 
- // ye tm dekh lena #KELVIN
 
 ### Local Run
 After setting up environment proceed with local run 
@@ -42,7 +42,7 @@ $ npm start
 │             ├── config.env
 │             ├── db.js
 │             └── passport.js
-├── controllers  =
+├── controllers  
 │             └── notifier.js
 ├── helpers
 │             └── hbs.js
