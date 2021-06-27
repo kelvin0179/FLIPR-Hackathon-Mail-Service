@@ -23,19 +23,18 @@
 
         <div class="row">
             <div class="input-field col s6">
-                <input id="schTime" name="schTime" type="number" min="1" class="validate" value={{mailData.schTime}}
-                    required>
+                <input id="schTime" name="schTime" type="number" min="1" max="60" class="validate"
+                    value={{mailData.schTime}} required>
                 <label for="schTime">Recieve Mail every </label>
             </div>
             <div class="input-field col s6">
-                <select id="status" name="schUnit">
+                <select id="status" name="schUnit" onchange="onChange(this,event)">
                     {{#select mailData.sctUnit}}
-                    <option value="sec" selected>Seconds</option>
-                    <option value="min">Minutes</option>
-                    <option value="hour">Hours</option>
-                    <option value="day">Days</option>
-                    <option value="mon">Months</option>
-                    <option value="year">Years</option>
+                    <option value="sec" selected>Recurring</option>
+                    <option value="hour">Daily</option>
+                    <option value="day">Weekly</option>
+                    <option value="date">Monthly</option>
+                    <option value="mon">Yearly</option>
                     {{/select}}
                 </select>
                 <label for="status">Time Unit</label>

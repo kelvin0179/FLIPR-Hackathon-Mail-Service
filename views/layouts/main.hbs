@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="\css\main.css">
-    <title>Document</title>
+    <title>Mail Service</title>
 </head>
 
 <body>
@@ -30,5 +30,23 @@
         });
     </script>
 </body>
+
+<script>
+    var input = document.getElementById("schTime");
+    function onChange() {
+        console.log('console', event.target.value)
+        if (event.target.value == "sec") {
+            input.setAttribute("max", 60);
+        } else if (event.target.value == "hour") {
+            input.setAttribute("max", 24);
+        } else if (event.target.value == "day") {
+            input.setAttribute("max", 8);
+        } else if (event.target.value == "date") {
+            input.setAttribute("max", 31);
+        } else if (event.target.value == "mon") {
+            input.setAttribute("max", 12);
+        }
+    }
+</script>
 
 </html>

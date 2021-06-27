@@ -23,12 +23,11 @@ router.get('/dashboard', ensureAuthenticated, async (req, res) => {
             userName = req.user.firstName;
         }
         const timeObj = {
-            "sec": "Second",
-            "min": "Minute",
-            "hour": "Hour",
-            "day": "Day",
-            "mon": "Month",
-            "year": "Year"
+            "sec": "Recurring",
+            "hour": "Daily",
+            "day": "Weekly",
+            "date": "Monthly",
+            "mon": "Yearly"
         };
         for (let i = 0; i < response.length; i++) {
             response[i].schUnit = (timeObj[response[i].schUnit]);
