@@ -36,9 +36,9 @@ app.use(methodOverride(function (req, res) {
     }
 }));
 
-const { saveData, formatDate } = require("./helpers/hbs");
+const { saveData, formatDate, select } = require("./helpers/hbs");
 //view engine handlebars
-app.engine('.hbs', exphbs({ helpers: { saveData, formatDate }, defaultLayout: 'main', extname: '.hbs' }));
+app.engine('.hbs', exphbs({ helpers: { saveData, formatDate, select }, defaultLayout: 'main', extname: '.hbs' }));
 app.set('view engine', '.hbs');
 
 
