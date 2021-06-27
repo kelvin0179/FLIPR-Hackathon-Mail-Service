@@ -38,10 +38,7 @@ router.post('/', ensureAuthenticated, async (req, res) => {
 
 router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
     try {
-        let maildata = await Mail.findById(req.params.id);
-
-        if (!maildata) res.status(400).render("error/400");
-
+        
         let patch = await Mail.findByIdAndUpdate(
             { _id: req.params.id },
             { $set: { isHome: false } },
@@ -54,10 +51,10 @@ router.get('/schedule/:id', ensureAuthenticated, async (req, res) => {
         cron.schedule('*/15 * * * * *', async () => {
 
             await notifier.sendEmail(
-                maildata.to,
-                maildata.cc,
-                maildata.subject,
-                maildata.mailBody,
+                patch.to,
+                patch.cc,
+                patch.subject,
+                patch.mailBody,
                 (err, result) => {
                     if (err) {
                         console.error({ err });
